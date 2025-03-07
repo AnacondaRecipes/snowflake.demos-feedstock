@@ -13,6 +13,8 @@ build:
   number: 100
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: True  # [py<39]
+  # snowflake.core and snowflake-snowpark-python are not available on s390x
+  skip: True  # [s390x]
 
 requirements:
   host:
