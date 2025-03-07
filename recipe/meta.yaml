@@ -1,0 +1,58 @@
+{% set name = "snowflake.demos" %}
+{% set version = "0.1.5" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('.', '_') }}-{{ version }}.tar.gz
+  sha256: 964f3472cb6d047f75ae2613cbe1e051e327e330d8a509b6fe28c884c4821d1f
+
+build:
+  number: 100
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: True  # [py<39]
+
+requirements:
+  host:
+    - python
+    - hatchling
+    - pip
+  run:
+    - python
+    - atpublic >=4
+    - snowflake.core >=1.0.0
+    - snowflake-snowpark-python >=1.27.0
+    - requests >=2.32.3
+    - cachetools >=5.3.3
+    - rich >=13.3.1
+    - ipython >=7.0.0,<9.0.0
+    - sqlparse >=0.4.4
+    - filetype >=1.2.0
+    - snowflake.core >=1.0.0
+
+test:
+  imports:
+    - snowflake.demos
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/snowflake.demos
+  summary: A library to scaffold a Snowflake Notebooks demo
+  license: Apache-2.0
+  license_family: Apache
+  license_file: licenses/LICENSE.txt
+  description: |
+    The Snowflake Python Demos library (snowflake.demos) helps you rapidly scaffold demos for Snowflake
+    Notebooks by automating environment setup tasks — such as configuring the database, schema, role, 
+    permissions, and dataset access — to streamline getting started with Snowflake Notebooks.
+  dev_url: https://inspector.pypi.io/project/snowflake-demos
+  doc_url: https://docs.snowflake.com/developer-guide/snowflake-python-api/snowflake-python-demos
+
+extra:
+  recipe-maintainers:
+    - snegireff
