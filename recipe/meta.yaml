@@ -51,7 +51,7 @@ about:
     The Snowflake Python Demos library (snowflake.demos) helps you rapidly scaffold demos for Snowflake
     Notebooks by automating environment setup tasks — such as configuring the database, schema, role, 
     permissions, and dataset access — to streamline getting started with Snowflake Notebooks.
-  dev_url: https://inspector.pypi.io/project/snowflake-demos
+  dev_url: https://pypi.org/project/snowflake.demos
   doc_url: https://docs.snowflake.com/developer-guide/snowflake-python-api/snowflake-python-demos
 
 extra:
